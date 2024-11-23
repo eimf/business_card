@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react'
 import './BusinessCard.scss'
 
 const BusinessCard = () => {
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
   const [isFlipped, setIsFlipped] = useState(false)
   const [isMobile, setIsMobile] = useState(false)
   const [isAnimating, setIsAnimating] = useState(false)
@@ -25,43 +24,19 @@ const BusinessCard = () => {
     checkMobile()
     window.addEventListener('resize', checkMobile)
     
-    const handleMouseMove = (e) => {
-      if (!isMobile) {
-        const { clientX: x, clientY: y } = e
-        setMousePosition({ x, y })
-      }
-    }
-
-    window.addEventListener('mousemove', handleMouseMove)
     return () => {
-      window.removeEventListener('mousemove', handleMouseMove)
       window.removeEventListener('resize', checkMobile)
     }
-  }, [isMobile])
+  }, [])
 
   const calculateRotation = () => {
-    if (isMobile) return { x: 0, y: 0 }
-    
-    const card = document.querySelector('.business-card')
-    if (!card) return { x: 0, y: 0 }
-    
-    const rect = card.getBoundingClientRect()
-    const centerX = rect.left + rect.width / 2
-    const centerY = rect.top + rect.height / 2
-    
-    const rotateY = ((mousePosition.x - centerX) / 25)
-    const rotateX = (-(mousePosition.y - centerY) / 25)
-    
-    return { x: rotateX, y: rotateY }
+    return { x: 0, y: 0 }
   }
 
   const rotation = calculateRotation()
   const transformStyle = isMobile
     ? `perspective(1000px) ${isFlipped ? 'rotateY(180deg)' : ''}`
-    : `perspective(1000px) 
-       rotateX(${rotation.x}deg) 
-       rotateY(${rotation.y}deg)
-       ${isFlipped ? 'rotateY(180deg)' : ''}`
+    : `perspective(1000px) ${isFlipped ? 'rotateY(180deg)' : ''}`
 
   return (
     <div className="business-card-container">
