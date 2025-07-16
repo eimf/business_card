@@ -116,6 +116,68 @@
           font-weight: 400;
           letter-spacing: 0.1em;
           text-transform: uppercase;
+          margin-bottom: 1.5rem;
+        }
+
+        .contact-info {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 1rem;
+
+          .contact-item.phone {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: rgba(255, 255, 255, 0.9);
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 500;
+            font-size: clamp(0.9rem, 2.5vw, 1rem);
+            
+            svg {
+              color: rgba(0, 255, 255, 0.8);
+            }
+          }
+
+          .social-links-header {
+            display: flex;
+            gap: 1rem;
+            
+            .social-link-header {
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              width: 40px;
+              height: 40px;
+              background: rgba(123, 0, 255, 0.2);
+              border: 1px solid rgba(123, 0, 255, 0.4);
+              border-radius: 50%;
+              color: rgba(255, 255, 255, 0.8);
+              text-decoration: none;
+              transition: all 0.3s ease;
+
+              &:focus {
+                outline: 2px solid rgba(0, 255, 255, 0.6);
+                outline-offset: 2px;
+              }
+
+              &:hover {
+                background: rgba(123, 0, 255, 0.3);
+                border-color: rgba(0, 255, 255, 0.6);
+                color: rgba(0, 255, 255, 0.9);
+                transform: translateY(-2px) scale(1.05);
+                box-shadow: 0 5px 20px rgba(0, 255, 255, 0.2);
+              }
+
+              svg {
+                transition: transform 0.3s ease;
+              }
+
+              &:hover svg {
+                transform: scale(1.1);
+              }
+            }
+          }
         }
       }
 
@@ -302,49 +364,6 @@
           .project-description {
             font-size: clamp(0.7rem, 2.5vw, 0.85rem);
             color: rgba(255, 255, 255, 0.7);
-            font-family: 'Orbitron', sans-serif;
-            font-weight: 400;
-            line-height: 1.4;
-            margin-bottom: 0.8rem;
-          }
-
-          .tech-stack {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.3rem;
-            margin-bottom: 0.8rem;
-
-            .tech-tag {
-              padding: 0.2rem 0.5rem;
-              background: rgba(255, 20, 147, 0.2);
-              border: 1px solid rgba(255, 20, 147, 0.3);
-              border-radius: 12px;
-              color: rgba(255, 255, 255, 0.8);
-              font-size: clamp(0.6rem, 2vw, 0.7rem);
-              font-family: 'Orbitron', sans-serif;
-              font-weight: 400;
-            }
-          }
-
-          .project-link {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            color: rgba(0, 255, 255, 0.8);
-            font-size: clamp(0.7rem, 2.5vw, 0.85rem);
-            font-family: 'Orbitron', sans-serif;
-            font-weight: 500;
-
-            svg {
-              transition: transform 0.3s ease;
-            }
-          }
-
-          &:hover .project-link svg {
-            transform: translate(2px, -2px);
-          }
-        }
-      }
 
       .resume-button {
         display: flex;
