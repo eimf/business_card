@@ -242,69 +242,6 @@
           }
         }
 
-        .social-links {
-          display: flex;
-          gap: 1rem;
-          margin-bottom: 1.5rem;
-          justify-content: center;
-
-          .social-link {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.75rem 1rem;
-            background: rgba(123, 0, 255, 0.2);
-            border: 1px solid rgba(123, 0, 255, 0.4);
-            border-radius: 8px;
-            padding: 1.5rem;
-            text-decoration: none;
-            font-size: clamp(0.8rem, 2.5vw, 0.9rem);
-            font-family: 'Orbitron', sans-serif;
-            font-weight: 500;
-            transition: all 0.3s ease;
-
-            &:focus {
-              outline: 2px solid rgba(0, 255, 255, 0.6);
-              outline-offset: 2px;
-            }
-
-            &:hover {
-              background: rgba(123, 0, 255, 0.3);
-              border-color: rgba(0, 255, 255, 0.6);
-              color: rgba(0, 255, 255, 0.9);
-              transform: translateY(-2px);
-              box-shadow: 0 5px 20px rgba(0, 255, 255, 0.2);
-            }
-
-              font-size: clamp(1.1rem, 3vw, 1.3rem);
-              transition: transform 0.3s ease;
-            }
-
-            &:hover svg {
-              font-size: clamp(0.85rem, 2.5vw, 1rem);
-            }
-              line-height: 1.4;
-              margin-bottom: 1rem;
-            }
-
-            .project-link {
-              display: flex;
-              align-items: center;
-              gap: 0.5rem;
-              color: rgba(0, 255, 255, 0.8);
-              font-size: clamp(0.8rem, 2.5vw, 0.9rem);
-              font-weight: 500;
-              
-              svg {
-                transition: transform 0.3s ease;
-              }
-            }
-
-            &:hover .project-link svg {
-              transform: translateX(2px);
-          }
-        }
-
         .project-item {
           background: rgba(255, 255, 255, 0.05);
           border: 1px solid rgba(123, 0, 255, 0.3);
