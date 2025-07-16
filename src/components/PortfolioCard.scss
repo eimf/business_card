@@ -1,0 +1,436 @@
+@import "../styles/variables";
+@import "../styles/mixins";
+
+.portfolio-card-container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  padding: 1rem;
+  background: linear-gradient(135deg, #1a0b2e 0%, #16213e 25%, #0f3460 50%, #533a7d 75%, #4a148c 100%);
+}
+
+.portfolio-card {
+  width: min(95vw, 480px);
+  height: min(85vh, 640px);
+  position: relative;
+  transform-origin: center;
+  perspective: 1000px;
+  cursor: pointer;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-style: preserve-3d;
+
+  &:focus {
+    outline: 2px solid rgba(0, 255, 255, 0.6);
+    outline-offset: 4px;
+  }
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: -3px;
+    background: linear-gradient(
+      45deg,
+      rgba(0, 255, 255, 0.3) 0%,
+      rgba(123, 0, 255, 0.3) 25%,
+      rgba(255, 20, 147, 0.3) 50%,
+      rgba(0, 255, 255, 0.3) 75%,
+      rgba(123, 0, 255, 0.3) 100%
+    );
+    border-radius: 16px;
+    z-index: -1;
+    animation: borderPulse 4s ease-in-out infinite;
+    filter: blur(10px);
+  }
+
+  .card-face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    border-radius: 12px;
+    padding: clamp(1.5rem, 4vw, 2.5rem);
+    background: rgba(15, 15, 30, 0.85);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(123, 0, 255, 0.3);
+    box-shadow: 
+      0 0 30px rgba(0, 255, 255, 0.15),
+      inset 0 0 60px rgba(123, 0, 255, 0.1);
+    overflow-y: auto;
+
+    @include paper-texture;
+
+    .shine {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(
+        125deg,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(123, 0, 255, 0.1) 30%,
+        rgba(0, 255, 255, 0.1) 70%,
+        rgba(255, 255, 255, 0) 100%
+      );
+      animation: shineEffect 6s linear infinite;
+      pointer-events: none;
+      border-radius: 12px;
+    }
+  }
+
+  .card-front {
+    .content {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      text-align: center;
+
+      .header {
+        margin-bottom: 2rem;
+
+        h1 {
+          font-size: clamp(1.8rem, 5vw, 2.5rem);
+          color: rgba(255, 255, 255, 0.95);
+          font-family: 'Orbitron', sans-serif;
+          font-weight: 700;
+          letter-spacing: 0.05em;
+          text-transform: uppercase;
+          text-shadow: 0 0 15px rgba(0, 255, 255, 0.6);
+          margin-bottom: 0.5rem;
+        }
+
+        .title {
+          font-size: clamp(1rem, 3vw, 1.3rem);
+          color: rgba(0, 255, 255, 0.8);
+          font-family: 'Orbitron', sans-serif;
+          font-weight: 400;
+          letter-spacing: 0.1em;
+          text-transform: uppercase;
+        }
+      }
+
+      .summary {
+        display: flex;
+        justify-content: space-around;
+        width: 100%;
+        margin: 2rem 0;
+        gap: 1rem;
+
+        .highlight-item {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 0.5rem;
+
+          .number {
+            font-size: clamp(1.5rem, 4vw, 2rem);
+            color: rgba(255, 20, 147, 0.9);
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
+            text-shadow: 0 0 10px rgba(255, 20, 147, 0.5);
+          }
+
+          .label {
+            font-size: clamp(0.7rem, 2.5vw, 0.9rem);
+            color: rgba(255, 255, 255, 0.7);
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 400;
+            text-align: center;
+            line-height: 1.2;
+          }
+        }
+      }
+
+      .skills-preview {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.8rem;
+        margin-top: 1rem;
+
+        .skill-tag {
+          padding: 0.4rem 0.8rem;
+          background: rgba(123, 0, 255, 0.2);
+          border: 1px solid rgba(123, 0, 255, 0.4);
+          border-radius: 20px;
+          color: rgba(255, 255, 255, 0.8);
+          font-size: clamp(0.7rem, 2.5vw, 0.85rem);
+          font-family: 'Orbitron', sans-serif;
+          font-weight: 500;
+          transition: all 0.3s ease;
+
+          &:hover {
+            background: rgba(123, 0, 255, 0.3);
+            border-color: rgba(0, 255, 255, 0.6);
+            color: rgba(0, 255, 255, 0.9);
+            transform: translateY(-2px);
+          }
+        }
+      }
+    }
+  }
+
+  .card-back {
+    transform: rotateY(180deg);
+
+    .content {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+
+      h2 {
+        font-size: clamp(1.3rem, 4vw, 1.6rem);
+        color: rgba(255, 255, 255, 0.95);
+        font-family: 'Orbitron', sans-serif;
+        font-weight: 600;
+        text-align: center;
+        margin-bottom: 1.5rem;
+        text-shadow: 0 0 10px rgba(0, 255, 255, 0.4);
+      }
+
+      .projects-grid {
+        flex: 1;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1rem;
+        margin-bottom: 1.5rem;
+        overflow-y: auto;
+        padding-right: 0.5rem;
+
+        &::-webkit-scrollbar {
+          width: 4px;
+        }
+
+        &::-webkit-scrollbar-track {
+          background: rgba(255, 255, 255, 0.1);
+          border-radius: 2px;
+        }
+
+        &::-webkit-scrollbar-thumb {
+          background: rgba(0, 255, 255, 0.3);
+          border-radius: 2px;
+
+          &:hover {
+            background: rgba(0, 255, 255, 0.5);
+          }
+        }
+
+        .project-item {
+          background: rgba(255, 255, 255, 0.05);
+          border: 1px solid rgba(123, 0, 255, 0.3);
+          border-radius: 8px;
+          padding: 1rem;
+          cursor: pointer;
+          transition: all 0.3s ease;
+          opacity: 0;
+          transform: translateY(20px);
+
+          &:focus {
+            outline: 2px solid rgba(0, 255, 255, 0.6);
+            outline-offset: 2px;
+          }
+
+          &:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(0, 255, 255, 0.5);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 20px rgba(0, 255, 255, 0.2);
+          }
+
+          h3 {
+            font-size: clamp(0.9rem, 3vw, 1.1rem);
+            color: rgba(255, 255, 255, 0.9);
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+          }
+
+          .project-description {
+            font-size: clamp(0.7rem, 2.5vw, 0.85rem);
+            color: rgba(255, 255, 255, 0.7);
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 400;
+            line-height: 1.4;
+            margin-bottom: 0.8rem;
+          }
+
+          .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.3rem;
+            margin-bottom: 0.8rem;
+
+            .tech-tag {
+              padding: 0.2rem 0.5rem;
+              background: rgba(255, 20, 147, 0.2);
+              border: 1px solid rgba(255, 20, 147, 0.3);
+              border-radius: 12px;
+              color: rgba(255, 255, 255, 0.8);
+              font-size: clamp(0.6rem, 2vw, 0.7rem);
+              font-family: 'Orbitron', sans-serif;
+              font-weight: 400;
+            }
+          }
+
+          .project-link {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: rgba(0, 255, 255, 0.8);
+            font-size: clamp(0.7rem, 2.5vw, 0.85rem);
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 500;
+
+            svg {
+              transition: transform 0.3s ease;
+            }
+          }
+
+          &:hover .project-link svg {
+            transform: translate(2px, -2px);
+          }
+        }
+      }
+
+      .resume-button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.8rem;
+        width: 100%;
+        padding: 1rem;
+        background: linear-gradient(45deg, rgba(123, 0, 255, 0.3), rgba(0, 255, 255, 0.3));
+        border: 2px solid rgba(0, 255, 255, 0.5);
+        border-radius: 8px;
+        color: rgba(255, 255, 255, 0.9);
+        font-size: clamp(0.9rem, 3vw, 1.1rem);
+        font-family: 'Orbitron', sans-serif;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+
+        &:focus {
+          outline: 2px solid rgba(0, 255, 255, 0.8);
+          outline-offset: 2px;
+        }
+
+        &:hover:not(:disabled) {
+          background: linear-gradient(45deg, rgba(123, 0, 255, 0.5), rgba(0, 255, 255, 0.5));
+          border-color: rgba(0, 255, 255, 0.8);
+          transform: translateY(-2px);
+          box-shadow: 0 5px 20px rgba(0, 255, 255, 0.3);
+        }
+
+        &:disabled {
+          opacity: 0.5;
+          cursor: not-allowed;
+        }
+
+        svg {
+          transition: transform 0.3s ease;
+        }
+
+        &:hover:not(:disabled) svg {
+          transform: translateY(2px);
+        }
+      }
+    }
+  }
+
+  &.flipped {
+    transform: rotateY(180deg);
+  }
+
+  &:hover:not(.animating) {
+    transform: scale(1.02);
+
+    &.flipped {
+      transform: scale(1.02) rotateY(180deg);
+    }
+  }
+
+  @media (max-width: 768px) {
+    &:hover {
+      transform: none;
+
+      &.flipped {
+        transform: rotateY(180deg);
+      }
+    }
+  }
+}
+
+.flip-instruction {
+  margin-top: 1.5rem;
+  color: rgba(255, 255, 255, 0.6);
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 500;
+  font-size: clamp(0.8rem, 2.5vw, 0.9rem);
+  text-align: center;
+  opacity: 0;
+  animation: fadeInOut 3s ease-in-out infinite;
+  pointer-events: none;
+
+  @media (max-width: 768px) {
+    margin-top: 1rem;
+    font-size: clamp(0.7rem, 2.5vw, 0.8rem);
+  }
+}
+
+.portfolio-card.flipped ~ .flip-instruction {
+  opacity: 0 !important;
+  animation: none;
+}
+
+.portfolio-card.flipped .card-back .projects-grid .project-item {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@keyframes borderPulse {
+  0%, 100% {
+    opacity: 0.3;
+    filter: blur(10px);
+  }
+  50% {
+    opacity: 0.6;
+    filter: blur(15px);
+  }
+}
+
+@keyframes shineEffect {
+  0% {
+    opacity: 0;
+    transform: translateX(-100%) skewX(-15deg);
+  }
+  50% {
+    opacity: 0.8;
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(100%) skewX(-15deg);
+  }
+}
+
+@keyframes fadeInOut {
+  0%, 100% {
+    opacity: 0;
+    transform: translateY(0);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(-3px);
+  }
+}
