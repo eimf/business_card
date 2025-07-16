@@ -170,13 +170,6 @@ const PortfolioCard = () => {
                 <span className="label">Technologies</span>
               </div>
             </div>
-
-            <div className="skills-preview">
-              <div className="skill-tag">React</div>
-              <div className="skill-tag">Node.js</div>
-              <div className="skill-tag">TypeScript</div>
-              <div className="skill-tag">Python</div>
-            </div>
           </div>
           <div className="shine"></div>
         </div>

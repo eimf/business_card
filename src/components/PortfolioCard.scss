@@ -185,7 +185,7 @@
         display: flex;
         justify-content: space-around;
         width: 100%;
-        margin: 2rem 0;
+        margin: 3rem 0;
         gap: 1rem;
 
         .highlight-item {
@@ -209,33 +209,6 @@
             font-weight: 400;
             text-align: center;
             line-height: 1.2;
-          }
-        }
-      }
-
-      .skills-preview {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 0.8rem;
-        margin-top: 1rem;
-
-        .skill-tag {
-          padding: 0.4rem 0.8rem;
-          background: rgba(123, 0, 255, 0.2);
-          border: 1px solid rgba(123, 0, 255, 0.4);
-          border-radius: 20px;
-          color: rgba(255, 255, 255, 0.8);
-          font-size: clamp(0.7rem, 2.5vw, 0.85rem);
-          font-family: 'Orbitron', sans-serif;
-          font-weight: 500;
-          transition: all 0.3s ease;
-
-          &:hover {
-            background: rgba(123, 0, 255, 0.3);
-            border-color: rgba(0, 255, 255, 0.6);
-            color: rgba(0, 255, 255, 0.9);
-            transform: translateY(-2px);
           }
         }
       }
