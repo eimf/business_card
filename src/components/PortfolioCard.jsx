@@ -39,26 +39,26 @@ const PortfolioCard = () => {
     {
       name: 'Jot Rocks',
       url: 'https://jot.rocks/',
-      description: 'Modern note-taking application',
-      tech: ['React', 'Node.js', 'MongoDB']
+      description: 'Sleek note-taking platform with fluid animations and intuitive design',
+      tech: ['Dynamic UI', 'Real-time Sync', 'Cloud Storage']
     },
     {
       name: 'Tour Selkirk Mexico',
       url: 'https://tourselkirkmexico.com/',
-      description: 'Tourism and travel booking platform',
-      tech: ['Vue.js', 'Express', 'PostgreSQL']
+      description: 'Immersive travel experience with stunning visuals and smooth interactions',
+      tech: ['Interactive Maps', 'Booking System', 'Media Gallery']
     },
     {
       name: 'Tableau de Katia',
       url: 'https://tableaudekatia.com/',
-      description: 'Art portfolio and gallery showcase',
-      tech: ['React', 'Gatsby', 'Strapi']
+      description: 'Elegant art gallery with captivating transitions and visual storytelling',
+      tech: ['Image Gallery', 'Portfolio Display', 'Artist Showcase']
     },
     {
       name: 'Sheets App',
       url: 'https://sheets-app.fly.dev/',
-      description: 'Collaborative spreadsheet application',
-      tech: ['TypeScript', 'WebSockets', 'Redis']
+      description: 'Dynamic spreadsheet tool with seamless collaboration and live updates',
+      tech: ['Live Collaboration', 'Data Visualization', 'Real-time Updates']
     }
   ]
 
