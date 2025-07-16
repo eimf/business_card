@@ -1,8 +1,8 @@
-import BusinessCard from './components/BusinessCard'
+import PortfolioCard from './components/PortfolioCard'
 import './App.scss'
 
 function App() {
-  return <BusinessCard />
+  return <PortfolioCard />
 }
 
 export default App
