@@ -3,21 +3,6 @@ import './PortfolioCard.scss'
 
 const PortfolioCard = () => {
   const [isFlipped, setIsFlipped] = useState(false)
-  const [isMobile, setIsMobile] = useState(false)
-  const [isAnimating, setIsAnimating] = useState(false)
-
-  const handleFlip = () => {
-    setIsAnimating(true)
-    setIsFlipped(!isFlipped)
-  }
-
-  const handleTransitionEnd = () => {
-    setIsAnimating(false)
-  }
-
-  const handleKeyDown = (event) => {
-    if (event.key === 'Enter' || event.key === ' ') {
-      event.preventDefault()
       handleFlip()
     }
   }
