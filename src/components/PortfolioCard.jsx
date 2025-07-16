@@ -107,7 +107,7 @@ const PortfolioCard = () => {
             
             <div className="summary">
               <div className="highlight-item">
-                <span className="number">4+</span>
+                <span className="number">13+</span>
                 <span className="label">Years Experience</span>
               </div>
               <div className="highlight-item">
