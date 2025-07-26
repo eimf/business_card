@@ -368,34 +368,41 @@
         }
 
         .card-back {
+            overflow-y: auto;
+            scrollbar-width: thin;
+            scrollbar-color: rgba(0, 255, 255, 0.3) transparent;
+
+            &::-webkit-scrollbar {
+                width: 6px;
+            }
+
+            &::-webkit-scrollbar-track {
+                background: transparent;
+            }
+
+            &::-webkit-scrollbar-thumb {
+                background: rgba(0, 255, 255, 0.3);
+                border-radius: 3px;
+            }
+
+            &::-webkit-scrollbar-thumb:hover {
+                background: rgba(0, 255, 255, 0.5);
+            }
+
             .back-content {
-                height: 100vh !important;
-                max-height: 100vh !important;
-                overflow-y: auto !important;
+                height: auto !important;
+                max-height: none !important;
+                overflow-y: visible !important;
                 overflow-x: hidden !important;
                 padding: 1.5rem !important;
-                scrollbar-width: thin !important;
-                scrollbar-color: rgba(0, 255, 255, 0.3) transparent !important;
+                scrollbar-width: none !important;
                 justify-content: flex-start !important;
                 gap: 2rem !important;
                 display: flex !important;
                 flex-direction: column !important;
 
                 &::-webkit-scrollbar {
-                    width: 6px !important;
-                }
-
-                &::-webkit-scrollbar-track {
-                    background: transparent !important;
-                }
-
-                &::-webkit-scrollbar-thumb {
-                    background: rgba(0, 255, 255, 0.3) !important;
-                    border-radius: 3px !important;
-                }
-
-                &::-webkit-scrollbar-thumb:hover {
-                    background: rgba(0, 255, 255, 0.5) !important;
+                    display: none;
                 }
 
                 .section {
