@@ -44,6 +44,7 @@ const BusinessCard = () => {
         e.stopPropagation(); // Prevent card flip
     };
 
+
     useEffect(() => {
         const checkMobile = () => {
             setIsMobile(window.innerWidth <= 768);
@@ -100,20 +101,47 @@ const BusinessCard = () => {
     ];
 
     return (
-        <div className="business-card-container">
-            <div
-                className={`business-card ${isFlipped ? "flipped" : ""} ${
-                    isAnimating ? "animating" : ""
-                } ${isExpanded ? "expanded" : ""}`}
-                onClick={handleFlip}
-                onTransitionEnd={handleTransitionEnd}
-                style={{ transform: transformStyle }}
-            >
+        <>
+            {/* Sticky Floating Flip Instruction - Only When Flipped */}
+            {isFlipped && (
+                <div className="sticky-flip-instruction">
+                    <div className="sticky-instruction-container">
+                        <div className="instruction-text">
+                            <span className="click-text">Click</span>
+                            <span className="anywhere-text">anywhere</span>
+                            <span className="to-flip-text">to flip back</span>
+                        </div>
+                        <div className="animated-arrows">
+                            <div className="arrow arrow-1">↺</div>
+                            <div className="arrow arrow-2">↻</div>
+                            <div className="arrow arrow-3">⟲</div>
+                        </div>
+                        <div className="pulsing-border"></div>
+                        <div className="floating-particles">
+                            <div className="particle particle-1"></div>
+                            <div className="particle particle-2"></div>
+                            <div className="particle particle-3"></div>
+                            <div className="particle particle-4"></div>
+                            <div className="particle particle-5"></div>
+                            <div className="particle particle-6"></div>
+                        </div>
+                    </div>
+                </div>
+            )}
+            
+            <div className="business-card-container">
+                <div
+                    className={`business-card ${isFlipped ? "flipped" : ""} ${
+                        isAnimating ? "animating" : ""
+                    } ${isExpanded ? "expanded" : ""}`}
+                    onClick={handleFlip}
+                    onTransitionEnd={handleTransitionEnd}
+                    style={{ transform: transformStyle }}
+                >
                 <div className="card-face card-front">
                     <div className="content">
                         <h1>Ezequiel Lopez</h1>
                         <h2 className="engineer-title">Engineer</h2>
-                        <p>+1 (410) 375-5262</p>
                     </div>
                     <div className="shine"></div>
                 </div>
@@ -180,8 +208,9 @@ const BusinessCard = () => {
                     </div>
                     <div className="shine"></div>
                 </div>
+                </div>
             </div>
-        </div>
+        </>
     );
 };
 
